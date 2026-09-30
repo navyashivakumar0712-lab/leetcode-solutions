@@ -1,23 +1,43 @@
 #include <iostream>
 #include <string>
+#include <algorithm>
 using namespace std;
 
-int main() {
-    string s = "hello";
-
-    int left = 0;
-    int right = s.length() - 1;
-
-    while (left < right) {
-        char temp = s[left];
-        s[left] = s[right];
-        s[right] = temp;
-
-        left++;
-        right--;
+class Solution {
+public:
+    void reverseString(string& s) {
+        reverse(s.begin(), s.end());
     }
+};
 
-    cout << "Reversed string: " << s << endl;
+int main() {
+    Solution solution;
+
+    // Test Case 1
+    string s1 = "hello";
+    solution.reverseString(s1);
+
+    cout << "Test Case 1:" << endl;
+    cout << "Output: " << s1 << endl;
+
+    if (s1 == "olleh")
+        cout << "PASS" << endl;
+    else
+        cout << "FAIL" << endl;
+
+    cout << endl;
+
+    // Test Case 2 - Edge Case
+    string s2 = "a";
+    solution.reverseString(s2);
+
+    cout << "Test Case 2:" << endl;
+    cout << "Output: " << s2 << endl;
+
+    if (s2 == "a")
+        cout << "PASS" << endl;
+    else
+        cout << "FAIL" << endl;
 
     return 0;
 }

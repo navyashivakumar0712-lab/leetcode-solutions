@@ -1,36 +1,57 @@
 # Valid Anagram
 
 ## Problem
-Check whether two strings contain the same letters with the same frequency.
+
+Given two strings, determine whether one string is an anagram of the other.
+
+**Difficulty:** Easy
+
+**LeetCode Link:** https://leetcode.com/problems/valid-anagram/
 
 ## Approach
-Use an array of size 26 to count lowercase English letters.
 
-Increase the count for characters in the first string and decrease the count for characters in the second string.
-
-If all counts become zero, the strings are anagrams.
+First, check whether both strings have the same length. Then sort the characters of both strings and compare them. If the sorted strings are equal, the two strings are anagrams.
 
 ## Example
 
-Input:
-s = "listen"
-t = "silent"
+**Input:**
 
-Output:
+```text
+anagram
+nagaram
+```
+
+**Output:**
+
+```text
 true
+```
 
 ## Time Complexity
-O(n)
+
+O(n log n)
 
 ## Space Complexity
+
 O(1)
 
 ## Testing
 
-Test Case 1:
-Input: listen, silent
-Output: Anagram
+### Test Case 1
 
-Test Case 2:
-Input: hello, world
-Output: Not an Anagram
+**Input:** `anagram`, `nagaram`
+
+**Output:** `true`
+
+### Test Case 2
+
+**Input:** `rat`, `car`
+
+**Output:** `false`
+
+## Notes
+
+* The strings are sorted before comparison.
+* If their sorted forms are equal, they are anagrams.
+* The program was tested locally in VS Code.
+* The solution was submitted and accepted on LeetCode.

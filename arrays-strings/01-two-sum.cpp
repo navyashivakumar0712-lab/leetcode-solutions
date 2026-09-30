@@ -1,35 +1,56 @@
-
 #include <iostream>
+#include <vector>
 using namespace std;
 
-void twoSum(int nums[], int n, int target, int result[]) {
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
 
-    for (int i = 0; i < n; i++) {
-        for (int j = i + 1; j < n; j++) {
+        for (int i = 0; i < nums.size(); i++) {
+            for (int j = i + 1; j < nums.size(); j++) {
 
-            if (nums[i] + nums[j] == target) {
-                result[0] = i;
-                result[1] = j;
-                return;
+                if (nums[i] + nums[j] == target) {
+                    return {i, j};
+                }
             }
         }
-    }
 
-    result[0] = -1;
-    result[1] = -1;
-}
+        return {};
+    }
+};
 
 int main() {
 
-    int nums[] = {2, 7, 11, 15};
-    int n = 4;
-    int target = 9;
+    Solution s;
 
-    int result[2];
+    // Test Case 1
+    vector<int> nums1 = {2, 7, 11, 15};
+    int target1 = 9;
 
-    twoSum(nums, n, target, result);
+    vector<int> result1 = s.twoSum(nums1, target1);
 
-    cout << "[" << result[0] << ", " << result[1] << "]";
+    cout << "Test Case 1:" << endl;
+    cout << "Output: [" << result1[0] << ", " << result1[1] << "]" << endl;
+
+    if (result1[0] == 0 && result1[1] == 1)
+        cout << "PASS" << endl;
+    else
+        cout << "FAIL" << endl;
+
+
+    // Test Case 2
+    vector<int> nums2 = {3, 3};
+    int target2 = 6;
+
+    vector<int> result2 = s.twoSum(nums2, target2);
+
+    cout << "\nTest Case 2:" << endl;
+    cout << "Output: [" << result2[0] << ", " << result2[1] << "]" << endl;
+
+    if (result2[0] == 0 && result2[1] == 1)
+        cout << "PASS" << endl;
+    else
+        cout << "FAIL" << endl;
 
     return 0;
 }
