@@ -1,48 +1,76 @@
 #include <iostream>
 #include <string>
+#include <stack>
 using namespace std;
 
+class Solution {
+public:
+    bool isValid(string s) {
+        stack<char> st;
+
+        for (char c : s) {
+            if (c == '(' || c == '{' || c == '[') {
+                st.push(c);
+            }
+            else {
+                if (st.empty()) {
+                    return false;
+                }
+
+                char top = st.top();
+                st.pop();
+
+                if (c == ')' && top != '(') {
+                    return false;
+                }
+
+                if (c == '}' && top != '{') {
+                    return false;
+                }
+
+                if (c == ']' && top != '[') {
+                    return false;
+                }
+            }
+        }
+
+        return st.empty();
+    }
+};
+
 int main() {
-    string s = "([)]";
+    Solution solution;
 
-    char stack[100];
-    int top = -1;
-    bool valid = true;
+    // Test Case 1
+    string s1 = "()[]{}";
+    bool result1 = solution.isValid(s1);
 
-    for (int i = 0; i < s.length(); i++) {
-        char ch = s[i];
+    cout << "Test Case 1:" << endl;
+    cout << "Input: " << s1 << endl;
+    cout << "Output: " << (result1 ? "true" : "false") << endl;
 
-        if (ch == '(' || ch == '[' || ch == '{') {
-            top++;
-            stack[top] = ch;
-        }
-        else {
-            if (top == -1) {
-                valid = false;
-                break;
-            }
-
-            char open = stack[top];
-            top--;
-
-            if ((ch == ')' && open != '(') ||
-                (ch == ']' && open != '[') ||
-                (ch == '}' && open != '{')) {
-                valid = false;
-                break;
-            }
-        }
-    }
-
-    if (top != -1) {
-        valid = false;
-    }
-
-    if (valid) {
-        cout << "Valid Parentheses" << endl;
+    if (result1) {
+        cout << "PASS" << endl;
     }
     else {
-        cout << "Invalid Parentheses" << endl;
+        cout << "FAIL" << endl;
+    }
+
+    cout << endl;
+
+    // Test Case 2
+    string s2 = "(]";
+    bool result2 = solution.isValid(s2);
+
+    cout << "Test Case 2:" << endl;
+    cout << "Input: " << s2 << endl;
+    cout << "Output: " << (result2 ? "true" : "false") << endl;
+
+    if (!result2) {
+        cout << "PASS" << endl;
+    }
+    else {
+        cout << "FAIL" << endl;
     }
 
     return 0;

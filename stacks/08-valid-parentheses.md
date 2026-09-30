@@ -1,37 +1,55 @@
 # Valid Parentheses
 
 ## Problem
-Check whether the brackets in a string are correctly matched and properly ordered.
+
+Given a string containing parentheses, determine whether the brackets are valid and correctly matched.
+
+**Difficulty:** Easy
+
+**LeetCode Link:** https://leetcode.com/problems/valid-parentheses/
 
 ## Approach
-Use a stack.
 
-- Push every opening bracket onto the stack.
-- For every closing bracket, check the top opening bracket.
-- If they match, remove the opening bracket.
-- If they do not match, the string is invalid.
-- At the end, the stack must be empty.
+A stack is used to keep track of opening brackets. When a closing bracket is encountered, it is compared with the most recent opening bracket. The string is valid only if all brackets are correctly matched and the stack is empty at the end.
 
 ## Example
 
-Input:
-"({[]})"
+**Input:**
+()[]{}
 
-Output:
+**Output:**
 true
 
 ## Time Complexity
+
 O(n)
 
 ## Space Complexity
+
 O(n)
 
 ## Testing
 
-Test Case 1:
-Input: "({[]})"
-Output: Valid Parentheses
+### Test Case 1
 
-Test Case 2:
-Input: "([)]"
-Output: Invalid Parentheses
+**Input:** `()[]{}`
+
+**Output:** `true`
+
+**Result:** PASS
+
+### Test Case 2
+
+**Input:** `(]`
+
+**Output:** `false`
+
+**Result:** PASS
+
+## Notes
+
+* A stack is used to store opening brackets.
+* Each closing bracket is matched with the corresponding opening bracket.
+* An invalid or mismatched bracket returns `false`.
+* The program was tested locally in VS Code.
+* The solution was submitted and accepted on LeetCode.
